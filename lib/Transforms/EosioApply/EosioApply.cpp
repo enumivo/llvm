@@ -1,4 +1,4 @@
-//===- EosioApply ---------------===//
+//===- EnumivoApply ---------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -22,13 +22,13 @@
 #include "llvm/Support/raw_ostream.h"
 using namespace llvm;
 
-#define DEBUG_TYPE "eosio_apply"
+#define DEBUG_TYPE "enumivo_apply"
 
 namespace {
-  // EosioApply - Mutate the apply function as needed 
-  struct EosioApplyPass : public FunctionPass {
+  // EnumivoApply - Mutate the apply function as needed 
+  struct EnumivoApplyPass : public FunctionPass {
     static char ID; 
-    EosioApplyPass() : FunctionPass(ID) {}
+    EnumivoApplyPass() : FunctionPass(ID) {}
 
     bool runOnFunction(Function &F) override {
       if (F.getName().equals("apply")) {
@@ -60,8 +60,8 @@ namespace {
   };
 }
 
-char EosioApplyPass::ID = 0;
-static RegisterPass<EosioApplyPass> X("apply_fixup", "Eosio Apply Fixups");
+char EnumivoApplyPass::ID = 0;
+static RegisterPass<EnumivoApplyPass> X("apply_fixup", "Enumivo Apply Fixups");
 
-static void registerEosioApplyPass(const PassManagerBuilder&, legacy::PassManagerBase& PM) { PM.add(new EosioApplyPass()); }
-static RegisterStandardPasses RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible, registerEosioApplyPass);
+static void registerEnumivoApplyPass(const PassManagerBuilder&, legacy::PassManagerBase& PM) { PM.add(new EnumivoApplyPass()); }
+static RegisterStandardPasses RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible, registerEnumivoApplyPass);
