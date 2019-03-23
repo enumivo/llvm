@@ -235,3 +235,6 @@ def : MergeRule<"setOR<ProfileSampleAccurateAttr>">;
 def : MergeRule<"adjustCallerSSPLevel">;
 def : MergeRule<"adjustCallerStackProbes">;
 def : MergeRule<"adjustCallerStackProbeSize">;
+
+def EnumivoWasmEntry  : EnumAttr<"enumivo_wasm_entry">;
+def EnumivoWasmImport : EnumAttr<"enumivo_wasm_import">;
